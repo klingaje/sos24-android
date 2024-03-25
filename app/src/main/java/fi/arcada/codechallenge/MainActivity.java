@@ -12,13 +12,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView outputText;
     EditText inputText;
 
     TextView outputCalculate;
-    double[] values = {3.5, 4.4, 9.0, 1.2, 6.5, 12.0};
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -43,14 +45,13 @@ public class MainActivity extends AppCompatActivity {
         outputText.setText(text);
     }
 
-    public void calculate(View view) {
-        double summa = 0;
-        for (int i = 0; i < values.length; i++) {
-            summa = summa + values[i];
-        }
 
-        double medeltal = summa / values.length;
-        outputCalculate.setText(String.format("Medeltalet är %.2f", medeltal));
+
+    public void calculate(View view) {
+        double[] values = {3.5, 4.4, 9.0, 1.2, 6.9, 12.0};
+
+        outputCalculate.setText(String.format("Medeltalet är %.2f", Statistics.calcMean(values)));
+        outputText.setText(String.format("Medeltalet är %.2f", Statistics.calcMean(values)));
     }
 
 }
