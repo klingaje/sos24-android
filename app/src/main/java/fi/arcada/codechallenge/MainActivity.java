@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     public void calculate(View view) {
         double[] values = {3.5, 4.4, 9.0, 1.2, 6.9, 12.0};
 
