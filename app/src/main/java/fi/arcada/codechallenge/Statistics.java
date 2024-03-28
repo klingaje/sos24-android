@@ -31,8 +31,10 @@ public class Statistics {
 
     public static double calcStdev(ArrayList<Double> values) {
         double skillnad = 0;
+        double mean = calcMean(values);
+
         for (int i = 0; i < values.size(); i++) {
-            skillnad = skillnad + Math.pow(values.get(i) - calcMean(values), 2);
+            skillnad = skillnad + Math.pow(values.get(i) - mean, 2);
         }
 
         double varians = skillnad/values.size();
