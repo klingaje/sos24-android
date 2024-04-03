@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     @SuppressLint("DefaultLocale")
     public void calculate(View view) {
         ArrayList<Double> values = new ArrayList<>();
