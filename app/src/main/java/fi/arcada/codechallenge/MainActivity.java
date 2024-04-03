@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("DefaultLocale")
     public void calculate(View view) {
         outputCalculate.setText(String.format(
                 "Medeltalet är: %.2f\n Median: %.2f\n standardavvikelse: %.2f\n Typvärde: %.2f",
@@ -70,5 +71,8 @@ public class MainActivity extends AppCompatActivity {
                 Statistics.calcMode(values)
         ));
     }
+
+
+
 
 }
