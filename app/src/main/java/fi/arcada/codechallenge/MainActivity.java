@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         outputCalculate.setText("Medeltalet är...");
 
         // vi fyller vår arraylist med värdena från testdata-arrayen
-        for (int i = 0; i > testdata.length; i++) {
+        for (int i = 0; i < testdata.length; i++) {
 
             //vi lägger till data object till dataItems
             dataItems.add(new DataItem(names[i], testdata[i]));
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     public void calculate(View view) {
         ArrayList<Double> values = new ArrayList<>();
         for (DataItem item : dataItems) {
-             values.add(item.getValue());
+            values.add(item.getValue());
         }
         outputCalculate.setText(String.format(
                 "Medeltalet är: %.2f\n Median: %.2f\n standardavvikelse: %.2f\n Typvärde: %.2f",
