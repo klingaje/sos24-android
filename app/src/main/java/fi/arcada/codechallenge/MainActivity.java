@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     public void buttonHandler(View view) {
         String text = inputText.getText().toString();
         outputText.setText(text);
