@@ -83,19 +83,25 @@ public class MainActivity extends AppCompatActivity {
             values.add(item.getValue());
         }
         outputCalculate.setText(String.format(
-                "Medeltalet är: %.2f\n Median: %.2f\n standardavvikelse: %.2f\n Typvärde: %.2f",
+                "Medeltalet är: %.2f\n Median: %.2f\n standardavvikelse: %.2f\n Typvärde: %.2f\n lägre kvartilen: %.2f\n högre kvartilen: %.2f\n inre kvartilavstånd: %.2f",
                 Statistics.calcMean(values),
                 Statistics.calcMedian(values),
                 Statistics.calcStdev(values),
-                Statistics.calcMode(values)
+                Statistics.calcMode(values),
+                Statistics.calcLQ(values),
+                Statistics.calcHQ(values),
+                Statistics.calcIQR(values)
         ));
 
         outputText.setText(String.format(
-                "Medeltalet är: %.2f\n Median: %.2f\n standardavvikelse: %.2f\n Typvärde: %.2f",
+                "Medeltalet är: %.2f\n Median: %.2f\n standardavvikelse: %.2f\n Typvärde: %.2f\n lägre kvartilen: %.2f\n högre kvartilen: %.2f\n inre kvartilavstånd: %.2f",
                 Statistics.calcMean(values),
                 Statistics.calcMedian(values),
                 Statistics.calcStdev(values),
-                Statistics.calcMode(values)
+                Statistics.calcMode(values),
+                Statistics.calcLQ(values),
+                Statistics.calcHQ(values),
+                Statistics.calcIQR(values)
         ));
     }
 

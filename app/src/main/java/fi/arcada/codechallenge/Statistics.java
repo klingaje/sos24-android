@@ -68,4 +68,37 @@ public class Statistics {
             }
             return modeValue;
     }
+
+
+    public static double calcLQ (ArrayList<Double> values) {
+        ArrayList<Double> sorted = new ArrayList<>(values);
+
+        Collections.sort(sorted);
+
+        if (sorted.size() % 2 == 0) {
+            return 0;
+        }
+
+            int lowQ = (int) (sorted.size() * 0.25);
+            return sorted.get(lowQ);
+    }
+
+    public static double calcHQ (ArrayList<Double> values) {
+        ArrayList<Double> sorted = new ArrayList<>(values);
+
+        Collections.sort(sorted);
+
+        int highQ = (int) (sorted.size() * 0.75);
+        return sorted.get(highQ);
+    }
+
+    public static double calcIQR (ArrayList<Double> values) {
+        ArrayList<Double> sorted = new ArrayList<>(values);
+
+        Collections.sort(sorted);
+
+        int IQR = (int) (sorted.size() * 0.75) - (int) (sorted.size() * 0.25);
+        return sorted.get(IQR);
+    }
+
 }
