@@ -9,72 +9,93 @@
 
     <TextView
         android:id="@+id/outText"
-        android:layout_width="268dp"
-        android:layout_height="89dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="273dp"
+        android:layout_height="80dp"
         android:text="Code Challenge"
         android:textAlignment="textEnd"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputText"
-        app:layout_constraintHorizontal_bias="0.205"
-        app:layout_constraintStart_toStartOf="@+id/inputText"
-        app:layout_constraintTop_toBottomOf="@+id/inputText" />
-
-    <EditText
-        android:id="@+id/inputText"
-        android:layout_width="238dp"
-        android:layout_height="58dp"
-        android:ems="10"
-        android:hint="Skriv nånting"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.109" />
-
-    <Button
-        android:id="@+id/btnOk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:onClick="buttonHandler"
-        android:text="Ok!"
-        app:layout_constraintBottom_toBottomOf="@+id/inputText"
-        app:layout_constraintStart_toEndOf="@+id/inputText"
-        app:layout_constraintTop_toTopOf="@+id/inputText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/inputText"
+        app:layout_constraintVertical_bias="0.121" />
 
     <Button
         android:id="@+id/calculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="56dp"
         android:onClick="calculate"
         android:text="Räkna!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/outText"
-        app:layout_constraintTop_toBottomOf="@+id/inputText"
-        app:layout_constraintVertical_bias="0.219" />
+        app:layout_constraintEnd_toStartOf="@+id/outText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/inputText"
+        app:layout_constraintTop_toBottomOf="@+id/inputText" />
+
+    <EditText
+        android:id="@+id/inputValue"
+        android:layout_width="87dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:hint="Data"
+        android:inputType="number"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/inputText"
+        app:layout_constraintStart_toEndOf="@+id/inputText"
+        app:layout_constraintTop_toTopOf="@+id/inputText" />
 
     <TextView
         android:id="@+id/outputCalculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="@+id/calculate"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/calculate"
-        app:layout_constraintTop_toBottomOf="@+id/calculate" />
+        app:layout_constraintTop_toBottomOf="@+id/calculate"
+        app:layout_constraintVertical_bias="0.177" />
+
+    <EditText
+        android:id="@+id/inputText"
+        android:layout_width="129dp"
+        android:layout_height="75dp"
+        android:ems="10"
+        android:hint="Namn"
+        android:inputType="text"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.057" />
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:onClick="buttonHandler"
+        android:text="Ok!"
+        app:layout_constraintBottom_toBottomOf="@+id/inputText"
+        app:layout_constraintStart_toEndOf="@+id/inputValue"
+        app:layout_constraintTop_toTopOf="@+id/inputText"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="420dp"
-        android:layout_height="375dp"
+        android:layout_width="418dp"
+        android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputText"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

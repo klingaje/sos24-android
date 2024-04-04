@@ -1,6 +1,8 @@
 package fi.arcada.codechallenge;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -24,9 +26,14 @@ public class DatItemViewAdapter extends RecyclerView.Adapter<DatItemViewAdapter.
     @NonNull
     @Override
     public DatItemViewAdapter.DataItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        View view = inflater.inflate(R.layout.recycler_view_row, parent, false);
+
+        return new DataItemViewHolder(view);
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(@NonNull DatItemViewAdapter.DataItemViewHolder holder, int position) {
         DataItem item = dataItems.get(position);
