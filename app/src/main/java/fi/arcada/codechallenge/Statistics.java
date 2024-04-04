@@ -16,11 +16,17 @@ public class Statistics {
         return summa / values.size();
     }
 
-    public static double calcMedian(ArrayList<Double> values) {
+    public static ArrayList<Double> getSorted (ArrayList<Double> values) {
         // vi skapar en kopia av values
         ArrayList<Double> sorted = new ArrayList<>(values);
         // sedan sorterar vi kopian. Annars sorteras ursprungliga datamängden
         Collections.sort(sorted);
+
+        return sorted;
+    }
+
+    public static double calcMedian(ArrayList<Double> values) {
+        ArrayList<Double> sorted = getSorted(values);
 
         // detta funkar, ännu bättre skulle vara att kolla skillt för jämna datamängder
         int midIndex = sorted.size() / 2;
@@ -71,12 +77,11 @@ public class Statistics {
 
 
     public static double calcLQ (ArrayList<Double> values) {
-        ArrayList<Double> sorted = new ArrayList<>(values);
-
-        Collections.sort(sorted);
+        ArrayList<Double> sorted = getSorted(values);
 
         if (sorted.size() % 2 == 0) {
-            return 0;
+            // om datamängden är jämn
+            // ta 2 mittersta värden och ta medeltalet av dem
         }
 
             int lowQ = (int) (sorted.size() * 0.25);
@@ -84,18 +89,14 @@ public class Statistics {
     }
 
     public static double calcHQ (ArrayList<Double> values) {
-        ArrayList<Double> sorted = new ArrayList<>(values);
-
-        Collections.sort(sorted);
+        ArrayList<Double> sorted = getSorted(values);
 
         int highQ = (int) (sorted.size() * 0.75);
         return sorted.get(highQ);
     }
 
     public static double calcIQR (ArrayList<Double> values) {
-        ArrayList<Double> sorted = new ArrayList<>(values);
-
-        Collections.sort(sorted);
+        ArrayList<Double> sorted = getSorted(values);
 
         int IQR = (int) (sorted.size() * 0.75) - (int) (sorted.size() * 0.25);
         return sorted.get(IQR);

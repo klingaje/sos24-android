@@ -10,16 +10,16 @@
     <TextView
         android:id="@+id/outText"
         android:layout_width="273dp"
-        android:layout_height="80dp"
+        android:layout_height="140dp"
         android:text="Code Challenge"
         android:textAlignment="textEnd"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintHorizontal_bias="0.971"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputText"
-        app:layout_constraintVertical_bias="0.121" />
+        app:layout_constraintVertical_bias="0.145" />
 
     <Button
         android:id="@+id/calculate"
