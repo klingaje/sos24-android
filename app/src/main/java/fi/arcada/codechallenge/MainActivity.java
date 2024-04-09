@@ -1,6 +1,7 @@
 package fi.arcada.codechallenge;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -55,16 +56,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         //läs värde från shared prefs (uppdateras i buttonhandler
+        String greeting = prefs.getString("greeting", "Hello!");
         String lastText = prefs.getString("lastText", "-");
+        int appStarted = prefs.getInt("appStarted", 1);
 
         prefsEditor = prefs.edit();
-
-        int appStarted = prefs.getInt("appStarted", 0);
         prefsEditor.putInt("appStarted", appStarted + 1);
         prefsEditor.apply();
-        prefs.getInt("appStarted", 0);
+        appStarted = prefs.getInt("appStarted", 0);
 
-        outputText.setText("Appen har startats " + appStarted + " gånger" + "Last text: " + lastText);
+        outputText.setText(greeting + "\nAppen har startats " + appStarted + " gånger\n" + "Last text: " + lastText);
+
 
 
         // vi fyller vår arraylist med värdena från testdata-arrayen
@@ -80,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+    }
+
+    public void openSettings(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 
     //ok knappen
@@ -127,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 Statistics.calcIQR(values)
         ));
     }
+
 
 
 
