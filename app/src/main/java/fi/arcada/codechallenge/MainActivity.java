@@ -1,7 +1,9 @@
 package fi.arcada.codechallenge;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.EditText;
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     TextView outputCalculate;
     RecyclerView recyclerView;
     EditText inputValue;
+    SharedPreferences prefs;
+    SharedPreferences.Editor prefsEditor;
 
 
     String[] names = { "Helsingfors", "Esbo", "Tammerfors", "Vanda", "Uleåborg", "Åbo", "Jyväskylä", "Kuopio", "Lahtis", "Björneborg", "Kouvola", "Joensuu", "Villmanstrand", "Tavastehus", "Vasa", "Seinäjoki", "Rovaniemi", "S:t Michel", "Salo", "Kotka", "Borgå", "Karleby", "Hyvinge", "Lojo", "Träskända", "Raumo", "Kervo", "Kajana", "S:t Karins", "Nokia", "Ylöjärvi", "Kangasala", "Nyslott", "Riihimäki", "Raseborg", "Imatra", "Reso", "Brahestad", "Sastamala", "Torneå", "Idensalmi", "Valkeakoski", "Kurikka", "Kemi", "Varkaus", "Jämsä", "Fredrikshamn", "Nådendal", "Jakobstad", "Heinola", "Äänekoski", "Pieksämäki", "Forssa", "Ackas", "Orimattila", "Loimaa", "Nystad", "Ylivieska", "Kauhava", "Kuusamo", "Pargas", "Lovisa", "Lappo", "Kauhajoki", "Ulvsby", "Kankaanpää", "Kalajoki", "Mariehamn", "Alavo", "Pemar", "Lieksa", "Grankulla", "Nivala", "Kides", "Vittis", "Mänttä-Vilppula", "Närpes", "Keuru", "Nurmes", "Alajärvi", "Saarijärvi", "Orivesi", "Högfors", "Somero", "Letala", "Hangö", "Kuhmo", "Kiuruvesi", "Pudasjärvi", "Nykarleby", "Kemijärvi", "Oulainen", "Kumo", "Suonenjoki", "Ikalis", "Haapajärvi", "Harjavalta", "Haapavesi", "Outokumpu", "Virdois", "Kristinestad", "Parkano", "Viitasaari", "Etseri", "Kannus", "Pyhäjärvi", "Kaskö" };
@@ -42,14 +46,26 @@ public class MainActivity extends AppCompatActivity {
         outputText = findViewById(R.id.outText);
         inputText = findViewById(R.id.inputText);
 
-        outputText.setText("Min app funkar!");
-
         outputCalculate = findViewById(R.id.outputCalculate);
         outputCalculate.setText("Medeltalet är...");
-
         inputValue = findViewById(R.id.inputValue);
-
         recyclerView = findViewById(R.id.recyclerView);
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+
+        //läs värde från shared prefs (uppdateras i buttonhandler
+        String lastText = prefs.getString("lastText", "-");
+
+        prefsEditor = prefs.edit();
+
+        int appStarted = prefs.getInt("appStarted", 0);
+        prefsEditor.putInt("appStarted", appStarted + 1);
+        prefsEditor.apply();
+        prefs.getInt("appStarted", 0);
+
+        outputText.setText("Appen har startats " + appStarted + " gånger" + "Last text: " + lastText);
+
 
         // vi fyller vår arraylist med värdena från testdata-arrayen
         for (int i = 0; i < testdata.length; i++) {
@@ -66,10 +82,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //ok knappen
     public void buttonHandler(View view) {
         String text = inputText.getText().toString();
         outputText.setText(text);
         Double value = Double.parseDouble(inputValue.getText().toString());
+
+        //lägg till värdet till shared preference
+
+        prefsEditor = prefs.edit();
+        prefsEditor.putString("lastText",text);
+        prefsEditor.apply();
 
         dataItems.add(new DataItem(text, value));
     }
